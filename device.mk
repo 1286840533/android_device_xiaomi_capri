@@ -341,6 +341,9 @@ PRODUCT_BOOT_JARS += \
 # Thermal
 PRODUCT_PACKAGES += \
     thermal.msm8996
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-service-qti
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-8996.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-8996.conf
