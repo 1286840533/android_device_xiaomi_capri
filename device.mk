@@ -19,8 +19,9 @@ $(call inherit-product, vendor/xiaomi/capricorn/capricorn-vendor.mk)
 
 # Local overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay
+
+$(call inherit-product, device/xiaomi/msm8996-common/msm8996.mk)
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -32,8 +33,6 @@ PRODUCT_PACKAGES += \
     Snap
 
 # ConfigPanel
-PRODUCT_PACKAGES += \
-    ConfigPanel
 
 # Device init scripts
 PRODUCT_PACKAGES += \
@@ -67,4 +66,3 @@ PRODUCT_PACKAGES += \
     tinyplay
 
 # Inherit from msm8996-common
-$(call inherit-product, device/xiaomi/msm8996-common/msm8996.mk)
