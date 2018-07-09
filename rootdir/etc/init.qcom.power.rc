@@ -46,21 +46,11 @@ on boot
     chown system system /dev/cpuset/camera-daemon
     chown system system /dev/cpuset/camera-daemon/tasks
     chmod 0664 /dev/cpuset/camera-daemon/tasks
-
-    # if EAS is present, switch to sched governor (no effect if not EAS)
+    
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedutil"
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "schedutil"
-
     # Enable sched boost
     write /proc/sys/kernel/sched_boost 1
-
-    # Set light thermal restrictions while optimizing apps
-    # [throttle_freq_LITTLE, throttle_freq_big, throttle_temp, unthrottle_temp]
-    write /sys/kernel/msm_thermal/zone0 "1228800 1632000 46 44"
-    write /sys/kernel/msm_thermal/zone1 "1228800 1555200 50 47"
-    write /sys/kernel/msm_thermal/zone2 "1036800 1248000 55 53"
-    write /sys/kernel/msm_thermal/zone3 "729600 729600 65 63"
-    write /sys/kernel/msm_thermal/enabled 1
 
 on charger
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -69,6 +59,8 @@ on charger
     write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 1
     write /sys/devices/soc/${ro.boot.bootdevice}/${ro.boot.bootdevice}:ufs_variant/pm_qos_enable 1
 
+    wait /dev/block/bootdevice/by-name/system
+    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "userspace"
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed 300000
     write /sys/devices/system/cpu/cpu1/online 1
@@ -76,14 +68,12 @@ on charger
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_setspeed 300000
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
-    #write /sys/module/msm_thermal/parameters/enabled "N"
     start hvdcp_opti
-    start thermal-engine
 
 on enable-low-power
-
-     # Disable thermal hotplug to switch governor
-    #write /sys/module/msm_thermal/core_control/enabled 0
+    # Disable thermal hotplug to switch governor
+ # Disable thermal hotplug to switch governor
+    write /sys/module/msm_thermal/core_control/enabled 0
 
     # Set sync wakee policy tunable
     # write /proc/sys/kernel/sched_prefer_sync_wakee_to_waker 1
@@ -205,13 +195,23 @@ on property:sys.boot_completed=1
     # Set I/O squeduler
     setprop sys.io.scheduler "cfq"
 
+    # Start I/O prefetcher service
+#    start iop
+
 on property:init.svc.recovery=running
     trigger enable-low-power
 
-service charger /sbin/chargeonlymode
+service charger /charger
     class charger
-    group system graphics
+    group log
     seclabel u:r:charger:s0
+    writepid /dev/cpuset/system-background/tasks
+
+service energy-awareness /vendor/bin/energy-awareness
+    class main
+    user root
+    group system
+    oneshot
 
 service hvdcp_opti /vendor/bin/hvdcp_opti
     class main
