@@ -123,7 +123,7 @@ static int process_cam_preview_hint(void *metadata)
         if (((((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
                 (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) ||
             ((strncmp(governor, SCHEDUTIL_GOVERNOR, strlen(SCHEDUTIL_GOVERNOR)) == 0) &&
-                (strlen(governor) == strlen(SCHEDUTIL_GOVERNOR))))) {
+                (strlen(governor) == strlen(SCHEDUTIL_GOVERNOR)))))) {
             undo_hint_action(cam_preview_metadata.hint_id);
             ALOGI("Cam Preview hint stop");
             return HINT_HANDLED;
