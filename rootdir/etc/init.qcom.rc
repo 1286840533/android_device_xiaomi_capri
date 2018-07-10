@@ -429,13 +429,17 @@ service rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
-    shutdown critical
-    ioprio rt 0
     writepid /dev/cpuset/system-background/tasks
 
 service tftp_server /vendor/bin/tftp_server
     class core
     user root
+    writepid /dev/cpuset/system-background/tasks
+
+service atfwd /vendor/bin/ATFWD-daemon
+    class late_start
+    user system
+    group system radio
     writepid /dev/cpuset/system-background/tasks
 
 on property:wc_transport.start_hci=true
@@ -597,11 +601,11 @@ service readfem /vendor/bin/readfem
     oneshot
 
 service perfd /vendor/bin/perfd
-   class main
-   user root
-   group root system
-   writepid /dev/cpuset/system-background/tasks
-   disabled
+    class main
+    user root
+    group root system
+    writepid /dev/cpuset/system-background/tasks
+    disabled
 
 service readmac /vendor/bin/readmac
     class main
@@ -666,25 +670,9 @@ service ppd /vendor/bin/mm-pp-dpps
     socket pps stream 0660 system system
     disabled
 
-on property:init.svc.surfaceflinger=stopped
-    stop ppd
-
-on property:init.svc.surfaceflinger=running
-    start ppd
-
 on property:init.svc.surfaceflinger=restarting
     stop hwcomposer-2-1
     start hwcomposer-2-1
-    stop ppd
-
-on property:init.svc.zygote=stopped
-    stop ppd
-
-on property:init.svc.zygote=running
-    start ppd
-
-on property:init.svc.zygote=restarting
-    stop ppd
 
 on property:slpi.restart=1
     write /sys/kernel/debug/msm_subsys/slpi restart
