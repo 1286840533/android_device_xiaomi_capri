@@ -213,6 +213,7 @@ on post-fs-data
     mkdir /data/nfc/param 0770 nfc nfc
 
     # Create IOP  deamon related dirs
+    mkdir /data/misc/iop 0770 root system
     mkdir /data/vendor/iop 0770 root system
 
     # Mark the copy complete flag to not completed
@@ -526,7 +527,8 @@ service cnss-daemon /vendor/bin/cnss-daemon -n -l
     user system
     group system inet net_admin wifi
 
-on property:sys.shutdown.requested=*
+#on property:sys.shutdown.requested=*
+on property:sys.powerctl=*
     stop cnss-daemon
 
 service loc_launcher /vendor/bin/loc_launcher
@@ -673,6 +675,9 @@ service ppd /vendor/bin/mm-pp-dpps
 on property:init.svc.surfaceflinger=restarting
     stop hwcomposer-2-1
     start hwcomposer-2-1
+
+on property:sys.post_boot.parsed=1
+    start perfd
 
 on property:slpi.restart=1
     write /sys/kernel/debug/msm_subsys/slpi restart
