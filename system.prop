@@ -30,7 +30,6 @@ vendor.audio.tunnel.encode=false
 vendor.voice.path.for.pcm.voip=true
 vendor.audio.use.dts_eagle=true
 
-
 # Bluetooth
 bt.max.hfpclient.connections=1
 qcom.bluetooth.soc=rome
@@ -127,7 +126,6 @@ persist.data.df.iwlan_mux=9
 persist.data.df.dev_name=rmnet_usb0
 
 # Security patch level
-ro.vendor.build.security_patch=2018-05-01
 persist.sys.wfd.virtual=0
 # TimeService
 persist.timed.enable=true
@@ -145,9 +143,6 @@ wifi.interface=wlan0
 # VIDC: debug_levels
 # 1:ERROR 2:HIGH 4:LOW 0:NOLOGS 7:AllLOGS
 vidc.debug.level=0
-
-
-
 ro.vendor.qti.cgroup_follow.enable=true
 persist.vendor.qti.inputopts.enable=true
 persist.vendor.qti.inputopts.movetouchslop=0.6
@@ -159,3 +154,4 @@ sys.use_fifo_ui=1
 dalvik.vm.dex2oat-threads=4
 dalvik.vm.image-dex2oat-threads=4
 debug.generate-debug-info=false
+

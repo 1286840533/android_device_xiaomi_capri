@@ -42,7 +42,8 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
-PRODUCT_GENERIC_PROPERTIES += \		     
+
+PRODUCT_GENERIC_PROPERTIES += \
     use.dts_eagle=true \
     hpx_send_params=1
 
@@ -420,7 +421,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += ro.hardware.power=gemini
 
 # HWUI cache sizes
- PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_PROPERTY_OVERRIDES += \
      ro.hwui.texture_cache_size=96 \
      ro.hwui.path_cache_size=39 \
      ro.hwui.layer_cache_size=64 \
