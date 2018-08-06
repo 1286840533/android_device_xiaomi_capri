@@ -12,5 +12,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device.mk \
-    $(LOCAL_DIR)/du.mk
+    $(LOCAL_DIR)/aosp_capricorn.mk
