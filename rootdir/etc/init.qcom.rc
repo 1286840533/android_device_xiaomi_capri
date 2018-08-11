@@ -268,7 +268,7 @@ on boot
     mkdir /persist/data/tz 0700 system system
     mkdir /persist/qc_senseid 0700 system system
     mkdir /persist/bms 0700 root system
-    mkdir /persist/wlan_bt 0700 system system
+    mkdir /persist/wlan_bt 0770 system system
     mkdir /persist/audio 0777 media audio
     mkdir /persist/display 0770 system graphics
     restorecon_recursive /persist
@@ -370,19 +370,7 @@ on property:wc_transport.start_hci=false
 service start_hci_filter /vendor/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth oem_2950
-    disabled
-
-on property:wc_transport.start_root=true
-    start hci_filter_root
-
-on property:wc_transport.start_root=false
-    stop hci_filter_root
-
-service hci_filter_root /vendor/bin/wcnss_filter
-    class late_start
-    user bluetooth
-    group bluetooth oem_2950 system
+    group bluetooth diag system wakelock
     disabled
 
 service netmgrd /vendor/bin/netmgrd
@@ -400,7 +388,7 @@ service ipacm /vendor/bin/ipacm
 service qti /vendor/bin/qti
     class main
     user radio
-    group radio oem_2950 usb
+    group radio oem_2901 diag usb
     writepid /dev/cpuset/system-background/tasks
 
 service sensors /vendor/bin/sensors.qcom
@@ -445,7 +433,7 @@ service cnss-daemon /vendor/bin/cnss-daemon -n -l
     user system
     group system inet net_admin wifi
 
-on property:sys.shutdown.requested=*
+on property:sys.powerctl=*
     stop cnss-daemon
 
 service loc_launcher /vendor/bin/loc_launcher
@@ -516,13 +504,13 @@ on property:sys.shutdown.requested=*
 service readfem /vendor/bin/readfem
     class main
     user root
-    group root oem_2950
+    group root oem_2901
     oneshot
 
 service readmac /vendor/bin/readmac
     class main
     user root
-    group root oem_2950
+    group root oem_2901
     oneshot
 
 service thermal-engine /vendor/bin/thermal-engine -c ${sys.qcom.thermalcfg:-/vendor/etc/thermal-engine-8996.conf}
@@ -576,31 +564,14 @@ on property:vendor.ims.DATA_DAEMON_STATUS=1
     start vendor.imsrcsservice
 
 service ppd /vendor/bin/mm-pp-dpps
-    class late_start
+    class hal
     user system
     group system graphics
     socket pps stream 0660 system system
-    disabled
-
-on property:init.svc.surfaceflinger=stopped
-    stop ppd
-
-on property:init.svc.surfaceflinger=running
-    start ppd
 
 on property:init.svc.surfaceflinger=restarting
     stop hwcomposer-2-1
     start hwcomposer-2-1
-    stop ppd
-
-on property:init.svc.zygote=stopped
-    stop ppd
-
-on property:init.svc.zygote=running
-    start ppd
-
-on property:init.svc.zygote=restarting
-    stop ppd
 
 on property:slpi.restart=1
     write /sys/kernel/debug/msm_subsys/slpi restart
