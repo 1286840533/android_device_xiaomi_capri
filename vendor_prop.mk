@@ -6,6 +6,12 @@
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qcom.adreno.qgl.ShaderStorageImageExtendedFormats=0
 
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.cs.br=0.7 \
+    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,com.miui.cit,org.lineageos.snap
+
+
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1 \
