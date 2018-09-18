@@ -150,6 +150,13 @@ on post-fs-data
     mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
     mkdir /data/vendor/ramdump/bluetooth 0770 bluetooth bluetooth
 
+    # Create the directories used by DPM subsystem
+    mkdir /data/dpm 0771 system system
+    chown system system /data/dpm
+
+    mkdir /data/dpm/nsrm 0771 system system
+    chown system system /data/dpm/nsrm
+
     # Create the directories used by the Wireless subsystem
     mkdir /data/vendor/wifi 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
@@ -433,10 +440,12 @@ service cnd /vendor/bin/cnd
     group system wifi inet radio wakelock net_admin
     writepid /dev/cpuset/system-background/tasks
 
-service dpmQmiMgr /vendor/bin/dpmQmiMgr
-    class main
-    user system
-    group radio system
+#service dpmQmiMgr /vendor/bin/dpmQmiMgr
+#    class main
+#    user system
+#    group radio system
+
+
 
 service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
