@@ -202,12 +202,12 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(VENDOR_PATH)
 # Render
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
-# RIL
+# RIL, BT variants
 TARGET_RIL_VARIANT := caf
 TARGET_BT_VENDOR_VARIANT := caf
 # SELinux
-#BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
-#include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
+include device/qcom/sepolicy/sepolicy.mk
 
 # Vendor init
 TARGET_INIT_VENDOR_LIB := libinit_gemini
