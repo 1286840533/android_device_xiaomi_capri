@@ -69,7 +69,6 @@ on property:persist.spectrum.profile=1
     write /sys/block/sda/queue/scheduler fiops
     write /sys/block/sde/queue/scheduler fiops
     write /sys/module/workqueue/parameters/power_efficient N
-    write /sys/kernel/sched/arch_power 0
 
 # Battery
 on property:persist.spectrum.profile=2
@@ -98,7 +97,7 @@ on property:persist.spectrum.profile=2
     write /sys/block/sda/queue/scheduler noop
     write /sys/block/sde/queue/scheduler noop
     write /sys/module/workqueue/parameters/power_efficient Y
-    write /sys/kernel/sched/arch_power 1
+
 
 # Gaming
 on property:persist.spectrum.profile=3
@@ -129,7 +128,6 @@ on property:persist.spectrum.profile=3
     write /sys/block/sda/queue/scheduler fiops
     write /sys/block/sde/queue/scheduler fiops
     write /sys/module/workqueue/parameters/power_efficient N
-    write /sys/kernel/sched/arch_power 0
 
 
 
