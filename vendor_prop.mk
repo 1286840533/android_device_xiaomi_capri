@@ -58,7 +58,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # CNE
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.cne.feature=1
+    persist.vendor.cne.feature=1
 
 # Data modules
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -135,6 +135,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.nfc_nci=nqx.default \
     ro.nfc.port=I2C \
     persist.nfc.smartcard.config=SIM1,SIM2,eSE1
     

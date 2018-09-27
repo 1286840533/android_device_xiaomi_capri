@@ -56,8 +56,8 @@ PRODUCT_PACKAGES += \
 
 # GPS HIDL
 PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl-qti \
-    android.hardware.gnss@1.0-service-qti
+    android.hardware.gnss@1.1-impl-qti \
+    android.hardware.gnss@1.1-service-qti
 
 # Keymaster HIDL
 PRODUCT_PACKAGES += \
@@ -78,7 +78,8 @@ PRODUCT_PACKAGES += \
 
 # NFC HIDL
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.1-service
+    android.hardware.nfc@1.0-impl \
+    vendor.nxp.hardware.nfc@1.1-service
 
 # Power HIDL
 PRODUCT_PACKAGES += \

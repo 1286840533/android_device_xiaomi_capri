@@ -98,7 +98,7 @@
     <hal format="hidl">
         <name>android.hardware.gnss</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>IGnss</name>
             <instance>default</instance>
@@ -397,18 +397,27 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>vendor.nxp.nxpnfc</name>
+        <name>vendor.nxp.hardware.nfc</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
-            <name>INxpNfc</name>
+            <name>INqNfc</name>
             <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.gnss</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.2</version>
+        <interface>
+            <name>ILocHidlGnss</name>
+            <instance>gnss_vendor</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.gnss</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
         <interface>
             <name>ILocHidlGnss</name>
             <instance>gnss_vendor</instance>
@@ -527,6 +536,24 @@
             <name>IUimRemoteServiceServer</name>
             <instance>uimRemoteServer0</instance>
             <instance>uimRemoteServer1</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.data.latency</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ILinkLatency</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.factory</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IFactory</name>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl">

@@ -48,8 +48,6 @@ on init
     # Set permissions for persist partition
     mkdir /persist 0771 root system
 
-    symlink /sdcard /storage/sdcard0
-
     # Create cgroup mount point for memory
     mkdir /sys/fs/cgroup/memory/bg 0750 root system
     write /sys/fs/cgroup/memory/bg/memory.swappiness 140
@@ -176,6 +174,9 @@ on post-fs-data
 
     # Create directory for radio
     mkdir /data/vendor/radio 0770 system radio
+
+    # Create directory for modem_config
+    mkdir /data/vendor/modem_config 0570 radio root
 
     # Create directories for Location services
     mkdir /data/vendor/location 0770 gps gps
@@ -542,7 +543,11 @@ service loc_launcher /vendor/bin/loc_launcher
 service qcom-sh /vendor/bin/init.qcom.sh
     class late_start
     user root
+    group root system radio
     oneshot
+
+on property:ro.vendor.ril.mbn_copy_completed=1
+    write /data/vendor/radio/copy_complete 1
 
 service panel-sh /vendor/bin/init.panel.sh
     class core
