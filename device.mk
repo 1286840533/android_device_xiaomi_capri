@@ -22,8 +22,7 @@ $(call inherit-product, vendor/xiaomi/capricorn/capricorn-vendor.mk)
 
 # Local overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay 
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -32,7 +31,9 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap
+    SnapdragonCamera \
+    MusicFX \
+    SnapdragonMusic
 
 # ConfigPanel
 PRODUCT_PACKAGES += \
@@ -47,8 +48,6 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service
 
 # FlipFlap
-PRODUCT_PACKAGES += \
-    FlipFlap
 
 # Input
 PRODUCT_COPY_FILES += \
