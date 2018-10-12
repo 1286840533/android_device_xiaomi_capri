@@ -43,6 +43,7 @@ TARGET_NO_BOOTLOADER := true
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
@@ -54,7 +55,7 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 # Platform
 TARGET_BOARD_PLATFORM := msm8996
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno530
-
+TARGET_USES_COMMONSYS_DISPLAY_LIBRARY := false
 # Properties
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
@@ -102,12 +103,6 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # Dex
-ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    WITH_DEXPREOPT ?= true
-  endif
-endif
-WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= true
 
 # Display
 MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
@@ -132,7 +127,7 @@ TARGET_HW_DISK_ENCRYPTION := true
 
 # Extended Filesystem Support
 TARGET_EXFAT_DRIVER := sdfat
-
+USE_DEVICE_SPECIFIC_DATA-IPA-CFG-MGR := true
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(VENDOR_PATH)/config.fs
 
@@ -141,7 +136,7 @@ DEVICE_MANIFEST_FILE := $(VENDOR_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(VENDOR_PATH)/compatibility_matrix.xml
 
 # Lineage Hardware
-JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(VENDOR_PATH)/lineagehw|**/*.java
+#JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(VENDOR_PATH)/lineagehw|**/*.java
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -176,14 +171,12 @@ TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_xiaomi
 TARGET_RELEASETOOLS_EXTENSIONS := $(VENDOR_PATH)
 
 # RIL
-TARGET_RIL_VARIANT := caf
 
 # Security patch level
 VENDOR_SECURITY_PATCH := 2018-07-01
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
-
+#include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
 
 # Vendor init
