@@ -1,1 +1,2 @@
+add_lunch_combo citrus_capricorn-eng
 add_lunch_combo citrus_capricorn-userdebug
