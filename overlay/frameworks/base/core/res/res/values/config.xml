@@ -332,8 +332,14 @@
 
     <!-- Should the pinner service pin the Camera application? -->
     <bool name="config_pinnerCameraApp">true</bool>
- <integer name="config_deviceHardwareKeys">83</integer>
+    <integer name="config_deviceHardwareKeys">83</integer>
+    <integer name="config_deviceHardwareWakeKeys">65</integer>
     <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently
          in hardware. -->
+      <bool name="config_deviceHasVariableButtonBrightness">true</bool>
+      <bool name="config_proximityCheckOnWake">true</bool>
+    <integer name="config_proximityCheckTimeout">200</integer>
+      <integer name="config_deviceLightCapabilities">235</integer>
+<bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
     <bool name="config_setColorTransformAccelerated">true</bool>
 </resources>
