@@ -31,9 +31,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    SnapdragonCamera \
-    MusicFX \
-    SnapdragonMusic
+    MusicFX 
 
 # ConfigPanel
 PRODUCT_PACKAGES += \
