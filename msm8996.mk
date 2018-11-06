@@ -343,7 +343,8 @@ PRODUCT_PACKAGES += \
 
 # Telephony
 PRODUCT_PACKAGES += \
-    telephony-ext
+    libprotobuf-cpp-full \
+    telephony-ext 
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
