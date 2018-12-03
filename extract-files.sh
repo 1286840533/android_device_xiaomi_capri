@@ -64,4 +64,4 @@ if [ -s "$MY_DIR"/../$DEVICE/proprietary-files.txt ]; then
     extract "$MY_DIR"/../$DEVICE/proprietary-files.txt "$SRC" "$SECTION"
 fi
 
-"$MY_DIR"/setup-makefiles.sh
+"$MY_DIR"/setup-makefiles-common.sh
