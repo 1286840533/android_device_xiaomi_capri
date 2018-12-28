@@ -336,7 +336,44 @@
     <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently
          in hardware. -->
     <bool name="config_setColorTransformAccelerated">true</bool>
-    <integer name="config_deviceHardwareKeys">19</integer>
-    <integer name="config_deviceHardwareWakeKeys">69</integer>
 
+
+    <!-- Whether the always on display mode is available. -->
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+
+    <!-- Whether the display blanks itself when transition from a doze to a non-doze state -->
+    <bool name="config_displayBlanksAfterDoze">true</bool>
+
+    <!-- Control the behavior when the user long presses the home button.
+         0 - Nothing
+         1 - Recent apps view in SystemUI
+         2 - Launch assist intent
+         This needs to match the constants in
+         policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
+    -->
+    <integer name="config_longPressOnHomeBehavior">2</integer>
+
+    <!-- Hardware keys present on the device, stored as a bit field.
+         This integer should equal the sum of the corresponding value for each
+         of the following keys present:
+            1 - Home
+            2 - Back
+            4 - Menu
+            8 - Assistant (search)
+            16 - App switch
+            32 - Camera
+            64 - Volume rocker
+          For example, a device with Home, Back and Menu keys would set this
+        config to 7. -->
+    <integer name="config_deviceHardwareKeys">83</integer>
+
+    <!-- Bool for key backlight -->
+    <bool name="config_button_brightness_support">true</bool>
+
+    <!-- Does the battery LED support multiple colors. Used to decide if the user can change the colors -->
+    <bool name="config_multiColorBatteryLed">true</bool>
+
+    <bool name="config_multiColorNotificationLed">true</bool>
+
+   <bool name="config_proxiSensorWakupCheck">true</bool>
 </resources>
