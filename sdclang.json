@@ -3,7 +3,7 @@
         "SDCLANG": true,
         "SDCLANG_PATH": "prebuilts/snapdragon-llvm/toolchains/llvm-Snapdragon_LLVM_for_Android_6.0/prebuilt/linux-x86_64/bin",
         "SDCLANG_PATH_2": "prebuilts/snapdragon-llvm/toolchains/llvm-Snapdragon_LLVM_for_Android_6.0/prebuilt/linux-x86_64/bin",
-        "SDCLANG_FLAGS": "-mdefault-to-arm -Wno-vectorizer-no-neon -Wno-deprecated-register -Wno-tautological-type-limit-compare -Wno-unknown-warning-option",
-        "SDCLANG_FLAGS_2": "mdefault-to-arm -Wno-vectorizer-no-neon -Wno-deprecated-register -Wno-tautological-type-limit-compare -Wno-unknown-warning-option"
+        "SDCLANG_FLAGS": "-O3 -fvectorize -mcpu=kryo -mdefault-to-arm -Wno-vectorizer-no-neon -Wno-deprecated-register -Wno-tautological-type-limit-compare -Wno-unknown-warning-option",
+        "SDCLANG_FLAGS_2": "-O3 -fvectorize -mcpu=kryo -mdefault-to-arm -Wno-vectorizer-no-neon -Wno-deprecated-register -Wno-tautological-type-limit-compare -Wno-unknown-warning-option"
 },
 }
