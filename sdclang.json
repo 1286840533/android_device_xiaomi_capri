@@ -1,0 +1,14 @@
+{
+"default": {
+        "SDCLANG": true,
+        "SDCLANG_PATH": "prebuilts/snapdragon-llvm/toolchains/llvm-Snapdragon_LLVM_for_Android_6.0/prebuilt/linux-x86_64/bin",
+        "SDCLANG_PATH_2": "prebuilts/snapdragon-llvm/toolchains/llvm-Snapdragon_LLVM_for_Android_6.0/prebuilt/linux-x86_64/bin",
+        "SDCLANG_FLAGS": "-Wno-vectorizer-no-neon",
+        "SDCLANG_FLAGS_2": "-Wno-vectorizer-no-neon"
+},"msm8996": {
+        "SDCLANG": true,
+        "SDCLANG_PATH": "prebuilts/snapdragon-llvm/toolchains/llvm-Snapdragon_LLVM_for_Android_6.0/prebuilt/linux-x86_64/bin",
+        "SDCLANG_PATH_2": "prebuilts/snapdragon-llvm/toolchains/llvm-Snapdragon_LLVM_for_Android_6.0/prebuilt/linux-x86_64/bin",
+        "SDCLANG_FLAGS": "-Wno-vectorizer-no-neon",
+        "SDCLANG_FLAGS_2": "-Wno-vectorizer-no-neon"
+}}
