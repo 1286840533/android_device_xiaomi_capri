@@ -76,6 +76,9 @@ on late-fs
     write /sys/block/dm-0/queue/read_ahead_kb 2048
     write /sys/block/dm-1/queue/read_ahead_kb 2048
 
+    # Legacy ril-daemon is now disabled by default
+    enable ril-daemon
+
 on post-fs-data
     mkdir /data/vendor/misc 01771 system system
 
