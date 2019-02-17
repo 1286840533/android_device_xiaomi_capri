@@ -123,6 +123,5 @@
 
     <!-- Period of time in which to consider light samples in milliseconds. -->
     <integer name="config_autoBrightnessAmbientLightHorizon">5000</integer>
-     <bool name="config_deviceHasVariableButtonBrightness">true</bool>
      
 </resources>

@@ -31,7 +31,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    MusicFX 
+    Snap
 
 # ConfigPanel
 PRODUCT_PACKAGES += \
